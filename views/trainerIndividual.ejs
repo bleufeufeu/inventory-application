@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <title><%= trainer.name %> | PokéSQL</title>
+    <link rel="stylesheet" href="/styles/global.css">
+    <link rel="icon" href="/images/substitute.png">
+  </head>
+
+  <body>
+    <%- include("partials/navbar.ejs") %>
+
+    <div class="container">
+
+        <div class="trainerIndividual">
+            <div class="trainerBox">
+              <img src="/images/trainers/<%= trainer.img_file %>" alt="">
+              <div class="nametag"><%= trainer.name %></div>
+              <div><%= trainer.region %></div>
+              <a href="/trainers/<%= trainer.id %>/edit"><button>Edit Info/Party</button></a>
+
+              <form action="/trainers/<%= trainer.id %>/delete" method="POST" onsubmit="return confirm('Are you sure you want to delete this trainer?')">
+                <button type="submit">Delete Trainer</button>
+              </form>
+            </div>
+
+            <div class="partyContainer">
+              <% if (party.length > 0) { %>
+                  <% party.forEach((poke) => { %>
+                    <a href="/pokemon/<%= poke.name %>">
+                              <div class="pokemonBox">
+                                  <img class="pokemonImg" src="/images/pokemon/<%= poke.img_file %>" alt="<%= poke.name %>">
+                                  <div class="nametag"><%= poke.name %></div>
+                                  <div class="typeList">
+                                    <% poke.types.forEach((type) => { %>
+                                        <img class="type" src="/images/types/<%= type %>.png" alt="">
+                                    <%}); %>
+                                  </div>
+                              </div>
+                            </a>
+                  <%}); %>
+              <% } %>
+            </div>
+        </div>
+    </div>
+  </body>
+</html>

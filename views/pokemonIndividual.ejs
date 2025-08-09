@@ -1,0 +1,25 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <title><%= pokemon.name %> | PokéSQL</title>
+    <link rel="stylesheet" href="/styles/global.css">
+    <link rel="icon" href="/images/substitute.png">
+  </head>
+
+  <body>
+    <%- include("partials/navbar.ejs") %>
+
+    <div class="container centred">
+
+        <div class="pokemonBox">
+          <h1><%= pokemon.name %></h1>
+            <img src="/images/pokemon/<%= pokemon.img_file %>" alt="">
+            <% pokemon.types.forEach((type) => { %>
+                <img class="type" src="/images/types/<%= type %>.png" alt="">
+            <%}); %>
+            <div>Pokédex #<%= pokemon.dex_num %></div>
+            <div>Region: <%= pokemon.region %></div>
+        </div>
+    </div>
+  </body>
+</html>

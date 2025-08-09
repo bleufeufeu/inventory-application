@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <title>New Trainer | PokéSQL</title>
+    <link rel="stylesheet" href="/styles/global.css">
+    <link rel="icon" href="/images/substitute.png">
+  </head>
+
+  <body>
+    <%- include("partials/navbar.ejs") %>
+    <h1 style="text-align: center;">New Trainer</h1>
+
+    <div class="formContainer">
+      <a href="/"><button>Return Home</button></a>
+      <form action="/trainers" method="POST">
+          <label for="trainerName">Name:</label>
+          <input placeholder="Enter your name" name="trainerName" id="trainerName" type="text" required />
+          <label for="trainerSprite">Sprite:</label>
+          <select id="trainerSprite" name="trainerSprite" required>
+              <option value="red.png">Red</option>
+              <option value="leaf.png">Leaf</option>
+              <option value="ethan.png">Ethan</option>
+              <option value="lyra.png">Lyra</option>
+              <option value="brendan.png">Brendan</option>
+              <option value="may.png">May</option>
+          </select>
+
+          <div>Region:</div>
+          <div>
+            <% regions.forEach((region) => { %>
+                <div class="formItem">
+                  <input type="radio" id="<%= region.name %>" value="<%= region.name %>" name="region" required>
+                  <label for="<%= region.name %>"><%= region.name %></label>
+                </div>
+            <%}); %>
+          </div>
+          <button type="submit">Submit</button>
+      </form>
+    </div>
+  </body>
+</html>

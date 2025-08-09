@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <title><%= title %> | PokéSQL</title>
+    <link rel="stylesheet" href="/styles/global.css">
+    <link rel="icon" href="/images/substitute.png">
+  </head>
+
+  <body>
+    <%- include("partials/navbar.ejs") %>
+
+    <h1>Pokémon</h1>
+
+    <div class="pokemonList">
+      <div class="sidebar">
+        <div>Sort By Type:</div>
+        <form action="/pokemon" method="GET">
+          <% types.forEach((type) => { %>
+              <div class="formItem">
+                <input type="checkbox" id="<%= type.name %>" name="types" value="<%= type.name %>">
+                <label for="<%= type.name %>"><img class="type" src="/images/types/<%= type.name %>.png" alt=""></label>
+              </div>
+          <%}); %>
+          <button type="submit">Search</button>
+        </form>
+      </div>
+
+        <div class="pokemonContainer">
+          <% pokemon.forEach((poke) => { %>
+            <a href="/pokemon/<%= poke.name %>">
+              <div class="pokemonBox">
+                  <img class="pokemonImg" src="/images/pokemon/<%= poke.img_file %>" alt="<%= poke.name %>">
+                  <div class="nametag"><%= poke.name %></div>
+                  <div class="typeList">
+                    <% poke.types.forEach((type) => { %>
+                        <img class="type" src="/images/types/<%= type %>.png" alt="">
+                    <%}); %>
+                  </div>
+              </div>
+            </a>
+          <%}); %>
+        </div>
+    </div>
+  </body>
+</html>

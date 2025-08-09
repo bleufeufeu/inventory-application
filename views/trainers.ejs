@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <title><%= title %> | PokéSQL</title>
+    <link rel="stylesheet" href="/styles/global.css" />
+    <link rel="icon" href="/images/substitute.png" />
+  </head>
+
+  <body>
+    <%- include("partials/navbar.ejs") %>
+
+    <h1><%= title %></h1>
+
+    <div class="trainerList">
+      <div class="sidebar">
+        <a href="/trainers/new"><button>New Trainer</button></a>
+        <div>Sort By Region:</div>
+        <form class="filterTrainers" action="/trainers" method="GET">
+          <div>
+            <% regions.forEach((region) => { %>
+            <div class="formItem">
+              <input
+                type="radio"
+                id="<%= region.name %>"
+                value="<%= region.name %>"
+                name="region"
+              />
+              <label for="<%= region.name %>"><%= region.name %></label>
+            </div>
+            <%}); %>
+          </div>
+          <button type="submit">Apply Filter</button>
+        </form>
+      </div>
+
+      <div class="trainerContainer">
+        <% trainers.forEach((trainer) => { %>
+        <a href="/trainers/<%= trainer.id %>">
+          <div class="trainerBox">
+            <img src="/images/trainers/<%= trainer.img_file %>" alt="" />
+            <div class="nametag"><%= trainer.name %></div>
+            <div><%= trainer.region %></div>
+          </div>
+        </a>
+        <%}); %>
+      </div>
+    </div>
+  </body>
+</html>

@@ -1,0 +1,238 @@
+@font-face {
+  font-family: Pokefont;
+  src: url(../fonts/pokemon-emerald.ttf);
+}
+
+html,
+input,
+button,
+select,
+option {
+  font-family: Pokefont, sans-serif;
+  font-size: 1.6rem;
+}
+
+body,
+h1 {
+  padding: 0;
+  margin: 0;
+}
+
+h1 {
+  text-shadow: 2px 2px 5px #000000;
+}
+
+input[type="radio"],
+input[type="checkbox"] {
+  transform: scale(1.5);
+}
+
+body {
+  padding: 3.5rem;
+  padding-top: 5rem;
+  font-size: 1.6rem;
+  color: #ffffff;
+  background-image: url(../images/background.png);
+  backdrop-filter: brightness(80%);
+  background-size: cover;
+  background-position: center;
+  background-repeat: no-repeat;
+  min-height: 100vh;
+}
+
+img {
+  image-rendering: pixelated;
+  image-rendering: -moz-crisp-edges;
+  image-rendering: crisp-edges;
+  width: 300px;
+  height: auto;
+}
+
+a {
+  transition: 0.25s;
+  text-decoration: none;
+  color: #ffffff;
+}
+
+a:hover {
+  transform: scale(1.05);
+}
+
+button {
+  border: none;
+  width: 100%;
+  border-radius: 20px;
+  padding: 0.25rem;
+  color: #ffffff;
+  background-color: #3fa561;
+}
+
+button:hover {
+  filter: brightness(110%);
+  cursor: pointer;
+}
+
+.formItem {
+  display: flex;
+  gap: 0.5rem;
+  align-items: center;
+}
+
+.nametag {
+  font-weight: bolder;
+  font-size: 1.2em;
+}
+
+.navbar {
+  display: flex;
+  background-color: rgba(0, 0, 0, 0.6);
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  padding: 0.1rem;
+  padding-right: 0.7rem;
+  gap: 10px;
+  justify-content: space-between;
+}
+
+.navbar img {
+  height: 1em;
+  width: auto;
+}
+
+.navitem {
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  justify-content: center;
+}
+
+.navEnd {
+  display: flex;
+  gap: 10px;
+}
+
+.sidebar {
+  align-self: start;
+  display: flex;
+  flex-direction: column;
+  background-color: rgba(0, 0, 0, 0.6);
+  border-radius: 25px;
+  padding: 1rem;
+}
+
+.homeContainer {
+  padding: 2rem 0;
+  margin: 0 10rem;
+  border-radius: 25px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  background-color: rgba(0, 0, 0, 0.6);
+  gap: 10px;
+}
+
+.homeContainer button {
+  width: auto;
+}
+
+.trainerList,
+.pokemonList {
+  display: grid;
+  grid-template-columns: 1fr 7fr;
+  gap: 1rem;
+}
+
+.filterTrainers,
+.formContainer form {
+  display: flex;
+  flex-direction: column;
+  gap: 15px;
+}
+
+.trainerContainer,
+.pokemonContainer {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(250px, 1fr));
+  gap: 20px;
+  width: 100%;
+}
+
+.trainerBox {
+  background-color: rgba(0, 0, 0, 0.6);
+  border-radius: 25px;
+  max-width: 350px;
+  padding: 0 0 20px 0;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 10px;
+  align-self: start;
+}
+
+.pokemonBox {
+  align-self: start;
+  background-color: rgba(0, 0, 0, 0.6);
+  border-radius: 25px;
+  max-width: 350px;
+  padding: 0 0 20px 0;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 10px;
+}
+
+.pokemonImg {
+  height: 250px;
+  width: auto;
+}
+
+.typeList {
+  display: flex;
+  gap: 5px;
+}
+
+.type {
+  max-width: 100px;
+}
+
+.formContainer {
+  display: flex;
+  flex-direction: column;
+  padding: 2rem;
+  background-color: rgba(0, 0, 0, 0.6);
+  gap: 10px;
+  border-radius: 20px;
+}
+
+.partySelection {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(250px, 1fr));
+}
+
+.trainerIndividual {
+  display: flex;
+  flex-direction: column;
+  align-items: stretch;
+  gap: 20px;
+}
+
+.trainerIndividual .trainerBox {
+  align-self: center;
+  justify-self: stretch;
+}
+
+.partyContainer {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+  gap: 20px;
+  width: 100%;
+}
+
+.centred {
+  display: flex;
+  align-self: center;
+  justify-content: center;
+}

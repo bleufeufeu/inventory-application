@@ -1,0 +1,73 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <title><%= trainer.name %> | PokéSQL</title>
+    <link rel="stylesheet" href="/styles/global.css">
+    <link rel="icon" href="/images/substitute.png">
+  </head>
+
+  <body>
+    <%- include("partials/navbar.ejs") %>
+
+    <div class="container">
+
+        <div class="formContainer">
+          <h1 style="text-align: center;"><%= trainer.name %></h1>
+
+            <img style="display: block; margin: 0 auto;" src="/images/trainers/<%= trainer.img_file %>" alt="">
+
+            <form action="/trainers/<%= trainer.id %>/edit" method="POST">
+
+                <label for="trainerName">Name:</label>
+                <input placeholder="Enter your name" name="trainerName" id="trainerName" value="<%= trainer.name %>" type="text" required />
+
+                <label for="trainerSprite">Sprite:</label>
+                <select id="trainerSprite" name="trainerSprite" required>
+                    <option value="red.png" <%= trainer.img_file === 'red.png' ? 'selected' : '' %>>Red</option>
+                    <option value="leaf.png" <%= trainer.img_file === 'leaf.png' ? 'selected' : '' %>>Leaf</option>
+                    <option value="ethan.png" <%= trainer.img_file === 'ethan.png' ? 'selected' : '' %>>Ethan</option>
+                    <option value="lyra.png" <%= trainer.img_file === 'lyra.png' ? 'selected' : '' %>>Lyra</option>
+                    <option value="brendan.png" <%= trainer.img_file === 'brendan.png' ? 'selected' : '' %>>Brendan</option>
+                    <option value="may.png" <%= trainer.img_file === 'may.png' ? 'selected' : '' %>>May</option>
+                </select>
+
+                <div>Region:</div>
+ 
+                <% regions.forEach((region) => { %>
+                  <% if (region.name === trainer.region) { %>
+                    <div class="formItem">
+                      <input type="radio" id="<%= region.name %>" value="<%= region.name %>" name="region" checked required>
+                      <label for="<%= region.name %>"><%= region.name %></label>
+                    </div>
+                  <% } else { %>
+                    <div class="formItem">
+                      <input type="radio" id="<%= region.name %>" value="<%= region.name %>" name="region" required>
+                      <label for="<%= region.name %>"><%= region.name %></label>
+                    </div>
+                  <% } %>
+                <%}); %>
+
+                <div class="partySelection">
+                  <% if (party.length > 0) { %>
+                      <% party.forEach((poke, index) => { %>
+                        <div class="pokemonCard">
+                            Pokemon #<%= index+1 %>
+                            <select id="partyMembers<%= index %>" name="partyMembers[]">
+                              <option value="" <%= poke.name === "" ? 'selected' : '' %>>--None--</option>
+                              <% pokemon.forEach((p) => { %>
+                                <option value="<%= p.name %>" <%= p.name === poke.name ? 'selected' : '' %>><%= p.name %></option>
+                              <%}); %>
+                            </select>
+                        </div>
+                      <%}); %>
+                  <% } %>
+                </div>
+
+                <button type="submit">Submit</button>
+            </form>
+
+        </div>
+ 
+    </div>
+  </body>
+</html>
